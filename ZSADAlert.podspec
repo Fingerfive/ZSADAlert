@@ -21,21 +21,25 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/Fingersfive/ZSADAlert'
+  s.homepage         = 'https://github.com/Fingersfive'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Fingersfive' => 'fingersfive@foxmail.com' }
-  s.source           = { :git => 'https://github.com/Fingersfive/ZSADAlert.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/Fingerfive/ZSADAlert.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'ZSADAlert/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'ZSADAlert' => ['ZSADAlert/Assets/*.png']
-  # }
 
+  s.resource_bundles = {
+    'ZSADAlert' => ['ZSADAlert/Assets/*.png']
+  }
+  s.static_framework = true
+  s.dependency 'AFNetworking', '~> 3.1.0'
+  s.dependency 'Masonry'
+  s.dependency 'JPush'
+  s.dependency 'AVOSCloud'
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'

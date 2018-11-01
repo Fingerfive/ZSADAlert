@@ -1,0 +1,76 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - AVOSCloud (11.4.7)
+  - Expecta (1.0.6)
+  - "Expecta+Snapshots (3.1.1)":
+    - Expecta (~> 1.0)
+    - FBSnapshotTestCase/Core (~> 2.0)
+    - Specta (~> 1.0)
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+  - JCore (1.2.5)
+  - JPush (3.1.1.1):
+    - JCore (~> 1.2.5)
+  - Masonry (1.1.0)
+  - Specta (1.0.7)
+  - ZSADAlert (0.1.0):
+    - AFNetworking (~> 3.1.0)
+    - AVOSCloud
+    - JPush
+    - Masonry
+
+DEPENDENCIES:
+  - Expecta
+  - "Expecta+Snapshots"
+  - FBSnapshotTestCase
+  - Specta
+  - ZSADAlert (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - AVOSCloud
+    - Expecta
+    - "Expecta+Snapshots"
+    - FBSnapshotTestCase
+    - JCore
+    - JPush
+    - Masonry
+    - Specta
+
+EXTERNAL SOURCES:
+  ZSADAlert:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AVOSCloud: e1257f9a7c28e04ae8642d554a37654e8392d1b7
+  Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
+  "Expecta+Snapshots": dcff217eef506dabd6dfdc7864ea2da321fafbb8
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  JCore: 14706de2640b25fb77dbd02332696491407f37c9
+  JPush: 25dd9013fbe106082c14f9f30a82364ee98852fb
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
+  ZSADAlert: 50c7223e0f2fc3e789574097368abfef6d836096
+
+PODFILE CHECKSUM: a8166e71bbc15acb8ceea10e5e6dc0aa3d1fda6c
+
+COCOAPODS: 1.5.2

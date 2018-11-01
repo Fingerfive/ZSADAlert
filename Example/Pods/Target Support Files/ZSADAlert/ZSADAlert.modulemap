@@ -1,0 +1,6 @@
+framework module ZSADAlert {
+  umbrella header "ZSADAlert-umbrella.h"
+
+  export *
+  module * { export * }
+}

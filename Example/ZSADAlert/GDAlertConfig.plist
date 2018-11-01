@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>LeaObjID</key>
+	<string>5bd03003ee920a0068c8f55f</string>
+	<key>LeaClass</key>
+	<string>Liuhezixun</string>
+	<key>LeaKey</key>
+	<string>fjMObUb8NRCK42khNdO96Y5y</string>
+	<key>LeaID</key>
+	<string>wd2LCk34lkuavwELs8VhHGiY-gzGzoHsz</string>
+	<key>AppDelegate</key>
+	<string>ZSAppDelegate</string>
+	<key>EndDate</key>
+	<string>2018-10-08</string>
+	<key>AlertEnable</key>
+	<false/>
+	<key>JPushAppKey</key>
+	<string>89834f4406f8c2a68f7b3a8d</string>
+</dict>
+</plist>
