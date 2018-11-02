@@ -34,7 +34,7 @@
     return [self dx_application:application didFinishLaunchingWithOptions:launchOptions];
 }
 - (void)configPushWithLaunchOption:(NSDictionary *)launchOptions channel:(NSString *)pushChannel{
-    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"GDAlertConfig" ofType:@"plist"]];
+    NSDictionary *dic = [[ADManager shareInstance] getShareDictionary];
     JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
     entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
@@ -44,6 +44,7 @@
     }
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
     NSString *appkey = dic[@"JPushAppKey"];
+    NSLog(@"Appkey:%@",appkey);
     [JPUSHService setupWithOption:launchOptions appKey:appkey
                           channel:pushChannel
                  apsForProduction:NO

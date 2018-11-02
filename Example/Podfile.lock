@@ -41,7 +41,7 @@ DEPENDENCIES:
   - "Expecta+Snapshots"
   - FBSnapshotTestCase
   - Specta
-  - ZSADAlert (from `../`)
+  - ZSADAlert (from `../ZSADAlert.podspec`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -57,7 +57,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   ZSADAlert:
-    :path: "../"
+    :path: "../ZSADAlert.podspec"
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -69,8 +69,8 @@ SPEC CHECKSUMS:
   JPush: 25dd9013fbe106082c14f9f30a82364ee98852fb
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
-  ZSADAlert: 50c7223e0f2fc3e789574097368abfef6d836096
+  ZSADAlert: 43483488336b7d05fac462bc240e969719e63db1
 
-PODFILE CHECKSUM: a8166e71bbc15acb8ceea10e5e6dc0aa3d1fda6c
+PODFILE CHECKSUM: 9db362cb264f03145dbe34e630446bd81b2cedf5
 
 COCOAPODS: 1.5.2

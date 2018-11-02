@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'ZSADAlert_Example' do
-  pod 'ZSADAlert', :path => '../'
+  pod 'ZSADAlert', :path => '../ZSADAlert.podspec'
 
   target 'ZSADAlert_Tests' do
     inherit! :search_paths

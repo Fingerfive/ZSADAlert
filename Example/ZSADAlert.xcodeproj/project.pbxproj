@@ -252,6 +252,10 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Fingersfive;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = 7RFCRLVZXW;
+						ProvisioningStyle = Automatic;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -537,13 +541,17 @@
 			baseConfigurationReference = 0CEEDE7888131108220E54E0 /* Pods-ZSADAlert_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7RFCRLVZXW;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZSADAlert/ZSADAlert-Prefix.pch";
 				INFOPLIST_FILE = "ZSADAlert/ZSADAlert-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dzs.liuhezixun;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.ZSADAlert-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -554,13 +562,17 @@
 			baseConfigurationReference = 7DFF60486253A122898F9DD8 /* Pods-ZSADAlert_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7RFCRLVZXW;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZSADAlert/ZSADAlert-Prefix.pch";
 				INFOPLIST_FILE = "ZSADAlert/ZSADAlert-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dzs.liuhezixun;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.ZSADAlert-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

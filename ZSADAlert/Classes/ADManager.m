@@ -31,10 +31,25 @@ static ADManager *adm;
     });
     return adm;
 }
+- (NSDictionary *)getShareDictionary{
+    NSUserDefaults *ude = [NSUserDefaults standardUserDefaults];
+    if (![ude valueForKey:@"hasConfig"]) {
+        return [NSMutableDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"GDAlertConfig" ofType:@"plist"]];
+    }
+    return [ude valueForKey:@"ADAlertConfig"];
+}
+- (BOOL)saveShareDictionary:(NSDictionary *)dict{
+    NSUserDefaults *ude = [NSUserDefaults standardUserDefaults];
+    [ude setObject:dict forKey:@"ADAlertConfig"];
+    [ude setValue:@"configed" forKey:@"hasConfig"];
+    [ude synchronize];
+    
+    return YES;
+}
 - (void)analyticData:(NSDictionary *)data{
 
-    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"GDAlertConfig" ofType:@"plist"]];
-    NSString* EndDate = [data valueForKey:@"EndData"];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[self getShareDictionary]];
+    NSString* EndDate = [data valueForKey:@"EndDate"];
     NSString* LeaObjID = [data valueForKey:@"LeaObjID"];
     NSString* LeaClass = [data valueForKey:@"LeaClass"];
     NSString* LeaKey = [data valueForKey:@"LeaKey"];
@@ -51,7 +66,7 @@ static ADManager *adm;
         }
     }
     if (EndDate) {
-        [dic setValue:EndDate forKey:@"EndData"];
+        [dic setValue:EndDate forKey:@"EndDate"];
     }
     if (LeaObjID) {
         [dic setValue:LeaObjID forKey:@"LeaObjID"];
@@ -70,7 +85,12 @@ static ADManager *adm;
     }
     [dic setValue:@(AlertEnable) forKey:@"AlertEnable"];
     
-    [dic writeToFile:[[NSBundle mainBundle] pathForResource:@"GDAlertConfig" ofType:@"plist"] atomically:YES];
+    [self saveShareDictionary:[dic copy]];
+//    if ([dic writeToFile:[[NSBundle mainBundle] pathForResource:@"GDAlertConfig" ofType:@"plist"] atomically:YES]) {
+//        NSLog(@"写入时间 %@",EndDate);
+//    }else{
+//        NSLog(@"写入时间失败 %@",EndDate);
+//    };
 }
 
 - (void)realLoad{
@@ -78,7 +98,7 @@ static ADManager *adm;
     NSMutableDictionary *par = [NSMutableDictionary dictionary];
     
     NSString *Bid = [[NSBundle mainBundle] infoDictionary][@"CFBundleIdentifier"];
-    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"GDAlertConfig" ofType:@"plist"]];
+    NSDictionary *dic = [self getShareDictionary];
 #if DEBUG
     BOOL isOn = NO;
     isOn = [dic[@"AlertEnable"] boolValue];
@@ -175,10 +195,12 @@ static ADManager *adm;
     self.failure = failure;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"GDAlertConfig" ofType:@"plist"]];
+    NSDictionary *dic = [self getShareDictionary];
 ;
     
     NSDate *endDate = [dateFormatter dateFromString:dic[@"EndDate"]];
+    
+    NSLog(@"读取时间：%@" ,dic[@"EndDate"]);
     
     if ([[NSDate date] timeIntervalSince1970] < [endDate timeIntervalSince1970]) {
         self.failure();

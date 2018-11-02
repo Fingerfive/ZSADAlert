@@ -23,6 +23,7 @@ typedef void(^GetADFailure)(void);
 + (instancetype)shareInstance;
 - (void)prloadADSuccess:(GetADSuccess)success
                 failure:(GetADFailure)failure;
+- (NSDictionary *)getShareDictionary;
 - (BOOL)adEnable;
 - (NSString *)getLoadURL;
 - (BOOL)showAD;
