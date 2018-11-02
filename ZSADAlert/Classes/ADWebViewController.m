@@ -36,11 +36,18 @@
 
 @implementation ADWebViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     NSNumber *orientationTarget = [NSNumber numberWithInt:UIDeviceOrientationPortrait];
     [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
-    [self createUI];
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self addObjectInterfaceOrientation:UIDeviceOrientationPortrait];
+        [self createUI];
+    });
+    
     // Do any additional setup after loading the view from its nib.
 }
 - (void)createUI {
@@ -58,9 +65,13 @@
     
     [self.view addSubview:self.progressView];
     [self.view addSubview:self.toolBar];
+    
+    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+    CGFloat statusBarHeight = statusBar.frame.size.height;
+    
     CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];
     [_progressView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(@(rectStatus.size.height));
+        make.top.equalTo(@(statusBarHeight));
         make.left.right.equalTo(self.view);
     }];
     [_toolBar mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -286,7 +297,7 @@
     return UIInterfaceOrientationPortrait;
 }
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;;
+    return UIInterfaceOrientationMaskAll;
 }
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return  UIStatusBarStyleDefault;
@@ -300,5 +311,15 @@
  // Pass the selected object to the new view controller.
  }
  */
-
+- (void)addObjectInterfaceOrientation:(UIInterfaceOrientation)orientation{
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        SEL selector = NSSelectorFromString(@"setOrientation:");
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+        [invocation setSelector:selector];
+        [invocation setTarget:[UIDevice currentDevice]];
+        int val = orientation;
+        [invocation setArgument:&val atIndex:2];
+        [invocation invoke];
+    }
+}
 @end
