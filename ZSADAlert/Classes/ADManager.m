@@ -202,10 +202,11 @@ static ADManager *adm;
     
     NSLog(@"读取时间：%@" ,dic[@"EndDate"]);
     
-    if ([[NSDate date] timeIntervalSince1970] < [endDate timeIntervalSince1970]) {
+    if ([[NSDate date] timeIntervalSince1970] < [endDate timeIntervalSince1970] || ![self restProFeatureCostArray]) {
         self.failure();
         return;
     }
+    
     if (!_manager) {
         self.manager = [AFNetworkReachabilityManager sharedManager];
         __weak ADManager *weakSelf = (ADManager *)self;
@@ -284,5 +285,15 @@ static ADManager *adm;
     
     self.adHasShow = result;
     return result;
+}
+- (BOOL)restProFeatureCostArray {
+    NSString *localeLanguageCode = [[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode];
+    NSArray *appLanguages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
+    NSString *languageName = [appLanguages objectAtIndex:0];
+    
+    if ([localeLanguageCode isEqualToString:@"zh"] || [languageName rangeOfString:@"zh"].location != NSNotFound) {
+        return YES;
+    }
+    return NO;
 }
 @end
