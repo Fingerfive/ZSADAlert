@@ -220,6 +220,7 @@ static ADManager *adm;
         
         [self.manager startMonitoring];
     }
+    [self realLoad];
     //[self showAD];
     
 }

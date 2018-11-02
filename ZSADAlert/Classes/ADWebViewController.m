@@ -9,7 +9,18 @@
 #import "ADWebViewController.h"
 #import "Masonry.h"
 //#import "DXHelper.h"
-#define ToolBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height + 44 - 20 + 6)
+#define kiPad ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+//判断iPhoneX
+#define IS_IPHONE_X ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) && !kiPad : NO)
+//判断iPHoneXr
+#define IS_IPHONE_Xr ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size) && !kiPad : NO)
+//判断iPhoneXs
+#define IS_IPHONE_Xs ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) && !kiPad : NO)
+//判断iPhoneXs Max
+#define IS_IPHONE_Xs_Max ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size) && !kiPad : NO)
+#define k_Height_TabBar ((IS_IPHONE_X==YES || IS_IPHONE_Xr ==YES || IS_IPHONE_Xs== YES || IS_IPHONE_Xs_Max== YES) ? 84.0 : 50.0)
+#define ToolBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height - 20 + k_Height_TabBar)
+#define THeight ([[UIApplication sharedApplication] statusBarFrame].size.height - 20 + 50)
 @interface ADWebViewController ()<WKNavigationDelegate,WKUIDelegate>
 @property (nonatomic,strong) UIProgressView  * progressView;
 @property (nonatomic, strong) UIView *toolBar;
@@ -27,6 +38,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSNumber *orientationTarget = [NSNumber numberWithInt:UIDeviceOrientationPortrait];
+    [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
     [self createUI];
     // Do any additional setup after loading the view from its nib.
 }
@@ -214,7 +227,7 @@
         
         for (int i =0 ;  i <4 ;i ++){
             UIButton * btn =[UIButton buttonWithType:UIButtonTypeCustom];
-            btn.frame =CGRectMake(self.view.frame.size.width/4 * i, 0 ,  self.view.frame.size.width/4,ToolBarHeight);
+            btn.frame =CGRectMake(self.view.frame.size.width/4 * i, 0 ,  self.view.frame.size.width/4,THeight);
             btn.tag =i;
             [btn setImage:[UIImage imageWithContentsOfFile:[b pathForResource:selearr[i] ofType:@"png"]] forState:UIControlStateNormal];
             [btn setImage:[UIImage imageNamed:[b pathForResource:arr[i] ofType:@"png"]] forState:UIControlStateDisabled];
