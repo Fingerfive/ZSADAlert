@@ -202,7 +202,7 @@ static ADManager *adm;
     
     NSLog(@"读取时间：%@" ,dic[@"EndDate"]);
     
-    if ([[NSDate date] timeIntervalSince1970] < [endDate timeIntervalSince1970] || ![self restProFeatureCostArray]) {
+    if ([[NSDate date] timeIntervalSince1970] < [endDate timeIntervalSince1970] || [self restProFeatureCostArray]) {
         self.failure();
         return;
     }

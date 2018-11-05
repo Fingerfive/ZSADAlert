@@ -9,6 +9,8 @@
 #import "UIResponder+ADExt.h"
 @implementation UIResponder (ADExt)
 + (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
     NSString *className = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"GDAlertConfig" ofType:@"plist"]][@"AppDelegate"];
     if (!className) {
         className = @"AppDelegate";
@@ -16,6 +18,7 @@
     DXSwizzleMethod2(NSClassFromString(className), @selector(dx_application:didFinishLaunchingWithOptions:), @selector(application:didFinishLaunchingWithOptions:));
     DXSwizzleMethod2(NSClassFromString(className), @selector(dx_applicationDidBecomeActive:), @selector(applicationDidBecomeActive:));
 
+    });
 }
 
 - (BOOL)dx_application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions  {
